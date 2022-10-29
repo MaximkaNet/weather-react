@@ -1,0 +1,76 @@
+/* weather content */
+.weather_content {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+@media (max-width: 768px) {
+  .weather_content {
+    flex-direction: column;
+  }
+
+  .weather_content .weather_info {
+    width: 100%;
+  }
+
+  .weather_content .weather_hourly {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 20px;
+    max-height: calc(100vh - 72px - 175px - var(--weatherbar-height));
+  }
+}
+
+.weather_container {
+  display: flex;
+}
+
+.weather_main_info {
+  display: flex;
+  flex-direction: column;
+}
+
+.place_name {
+  font-size: 24px;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.temperature {
+  font-size: 32px;
+  color: var(--secondary-color);
+  line-height: 26px;
+}
+
+.status {
+  font-size: 22px;
+  color: var(--primary-color);
+  margin-top: 5px;
+}
+
+.status_img {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  margin-top: 10px;
+  margin-left: 40px;
+}
+
+/* Additional info weather*/
+.weather_additional_info {
+  margin-top: 10px;
+}
+
+.weather_additional_info_item {
+  display: flex;
+}
+
+.additional_info_item_key {
+  color: var(--primary-color);
+  margin-right: 5px;
+}
+
+.additional_info_item_value {
+  color: var(--secondary-color);
+}

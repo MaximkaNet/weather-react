@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Calibri';
+}
+
+:root {
+  --bg-color: #31393C;
+  --item-color: #475155;
+  --secondary-color: #F79824;
+  --primary-color: #EEEEEE;
+  --third-color: #BBBBBB;
+  --arrow-color: #3CBF39;
+  --rain-color: #33A1FD;
+  --humidity-color: #418DCB;
+  --icon-size: 64px;
+  --width-md: 1100px;
+  --burger-color: #F79824;
+  --weatherbar-height: 127px;
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 30px;
+}

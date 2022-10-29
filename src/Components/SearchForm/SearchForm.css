@@ -1,0 +1,20 @@
+.searchForm{
+  display: flex;
+  border-bottom: 1px solid;
+  border-bottom-color: var(--primary-color);
+  width: 80%;
+  max-width: 300px;
+}
+.searchInput{
+  all: unset;
+
+  font-size: 16px;
+  color: var(--primary-color);
+  padding: 0 2px 2px 0;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+.send{
+  all: unset;
+  cursor: pointer;
+}

@@ -1,0 +1,38 @@
+.weather_hourly {
+  width: 50%;
+  max-width: 370px;
+  max-height: calc(100vh - 72px - var(--weatherbar-height));
+  padding-right: 10px;
+  overflow-y: auto;
+}
+
+.weather_hourly::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: #bbbbbb85;
+}
+
+.weather_hourly::-webkit-scrollbar {
+  width: 3px;
+}
+
+.weather_hourly:hover::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: var(--third-color);
+}
+
+.hourly_head {
+  display: grid;
+  grid-template-columns: 50px 50px 70px 1fr 70px;
+  /* justify-content: space-between; */
+  height: min-content;
+  padding: 0 20px;
+  padding-bottom: 0px;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+
+  position: sticky;
+  top: 0;
+  background: var(--bg-color);
+  box-shadow: 0px 0px 5px 10px var(--bg-color);
+  z-index: 100;
+}

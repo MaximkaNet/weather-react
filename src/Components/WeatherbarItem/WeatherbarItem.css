@@ -1,0 +1,62 @@
+.weatherbarItem {
+  width: 180px;
+  flex-shrink: 0;
+  height: 90px;
+  font-size: 18px;
+  border-left: 2px solid var(--item-color);
+  border-bottom: 2px solid var(--item-color);
+  padding: 10px 10px;
+  margin-left: 30px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.active {
+  border-color: var(--secondary-color);
+}
+
+.active .weatherbarItem_date {
+  color: var(--secondary-color);
+}
+
+.weatherbarItem:nth-child(1) {
+  margin-left: 0;
+}
+
+.weatherbarItem_container {
+  display: flex;
+}
+
+.weatherbarItem:hover {
+  border-bottom-color: var(--secondary-color);
+  transition: .2s;
+}
+
+.weatherbarItem_date {
+  color: var(--primary-color);
+  user-select: none;
+  transition: color .1s;
+}
+
+.weatherbarItem_additionalInfo {
+  color: var(--third-color);
+  height: 22px;
+  user-select: none;
+}
+
+.weatherbarItem_weatherState {
+  width: 36px;
+  height: 36px;
+  margin-left: 10px;
+  user-select: none;
+}
+
+.weatherbarItem_max {
+  color: var(--primary-color);
+  user-select: none;
+}
+
+.weatherbarItem_min {
+  color: var(--third-color);
+  user-select: none;
+}

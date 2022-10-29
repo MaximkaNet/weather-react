@@ -1,0 +1,38 @@
+.weatherbar {
+  width: 100%;
+  height: var(--weatherbar-height);
+}
+
+.weatherbarItems {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+/* .weatherbarItems:hover{
+  overflow-x: auto;
+} */
+.weatherbarItems::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: #bbbbbb85;
+}
+
+.weatherbarItems::-webkit-scrollbar {
+  height: 3px;
+}
+
+.weatherbarItems:hover::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: var(--third-color);
+}
+
+.hint {
+  width: 100%;
+  text-align: center;
+  color: #bbbbbb85;
+  margin-top: 10px;
+  font-size: 12px;
+  user-select: none;
+}
