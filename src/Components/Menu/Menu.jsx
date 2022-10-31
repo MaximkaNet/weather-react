@@ -4,7 +4,9 @@ import $ from 'jquery';
 import './Menu.css';
 
 const Menu = () => {
+  const [isBurger, setIsBurger] = useState(false);
   const [isActive, setActive] = useState(false);
+
   const menuItems = [{
     name: "Home",
     to: '/'
@@ -12,14 +14,27 @@ const Menu = () => {
     name: "Weather",
     to: '/weather'
   }];
-  const open = () => {
-    setActive(true);
+
+  const open = async () => {
+    await setActive(true);
+    $('.overlay').fadeIn(50, () => { $('.menu').addClass('open') })
   }
+
   const close = () => {
     $('.overlay').fadeOut('fast', () => setActive(false));
   }
-  useEffect(() => { $('.overlay').fadeIn(50, () => { $('.menu').addClass('open') }) }, [isActive]);
-  return (
+  window.addEventListener('resize', (event) => {
+    let width = window.innerWidth;
+    if (width < 768 && !isBurger) {
+      setIsBurger(true);
+    }
+    else if (width >= 768 && isBurger) {
+      setIsBurger(false);
+    }
+  })
+  useEffect(() => { /*$('.overlay').fadeIn(50, () => { $('.menu').addClass('open') })*/ }, [isActive]);
+  return isBurger
+    ?
     <>
       <div className="burger" onClick={open}>
         <span className="burger-item"></span>
@@ -42,6 +57,13 @@ const Menu = () => {
         </div>
       }
     </>
-  )
+    :
+    <>
+      <div className="menuList">
+        <div className="menuListItems">
+          {menuItems.map((i, index) => <Link key={index} to={i.to} className="menuListItem" onClick={close}>{i.name}</Link>)}
+        </div>
+      </div>
+    </>
 }
 export default Menu;

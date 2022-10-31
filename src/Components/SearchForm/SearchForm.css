@@ -1,11 +1,18 @@
-.searchForm{
+.searchForm {
   display: flex;
   border-bottom: 1px solid;
   border-bottom-color: var(--primary-color);
-  width: 80%;
+  width: 30%;
   max-width: 300px;
 }
-.searchInput{
+
+@media (max-width: 768px) {
+  .searchForm {
+    width: 80%;
+  }
+}
+
+.searchInput {
   all: unset;
 
   font-size: 16px;
@@ -14,7 +21,8 @@
   text-overflow: ellipsis;
   width: 100%;
 }
-.send{
+
+.send {
   all: unset;
   cursor: pointer;
 }
