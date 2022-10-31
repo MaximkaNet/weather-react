@@ -9,7 +9,7 @@ export const getPlaces = async (placeName) => {
 
     //conditions
     const addressCon = e.address.town || e.address.city || e.address.village;
-    const typeCon = e.type === "town" || e.type === "village" || e.type === "city";
+    const typeCon = e.type === "town" || e.type === "village" || e.type === "city" || e.type === "administrative";
 
     // console.log(addressCon);
     // console.log(typeCon);
