@@ -1,31 +1,30 @@
 import './Hourly.css';
-import time from '../../img/hourly/clock.png';
-import humidity from '../../img/hourly/humidity.png';
-import temperature from '../../img/hourly/temperature.png';
-import rain from '../../img/hourly/water.png';
-import wind from '../../img/hourly/wind.png';
+// import time from '../../img/hourly/clock.png';
+// import humidity from '../../img/hourly/humidity.png';
+// import temperature from '../../img/hourly/temperature.png';
+// import rain from '../../img/hourly/water.png';
+// import wind from '../../img/hourly/wind.png';
 import HourlyItem from '../HourlyItem/HourlyItem';
 import { useEffect } from 'react';
 import { handleHourly } from '../../utils/handlers';
-
+// const colums = [
+//   {
+//     img: time
+//   },
+//   {
+//     img: temperature
+//   },
+//   {
+//     img: rain
+//   },
+//   {
+//     img: humidity
+//   },
+//   {
+//     img: wind
+//   }
+// ]
 const Hourly = ({ hourly }) => {
-  const colums = [
-    {
-      img: time
-    },
-    {
-      img: temperature
-    },
-    {
-      img: rain
-    },
-    {
-      img: humidity
-    },
-    {
-      img: wind
-    }
-  ]
   useEffect(() => {
     handleHourly()
   })
@@ -34,10 +33,9 @@ const Hourly = ({ hourly }) => {
       <div className="weather_hourly">
         {
           hourly != null &&
-          hourly.map((i, key) => {
-            if (key % 2 === 1)
-              return <HourlyItem key={key} hourWeather={i} />
-          })
+          hourly.map((i, key) => key % 2 === 1 ?
+            <HourlyItem key={key} hourWeather={i} /> : null
+          )
         }
       </div>
       {/* <div className="weather_hourly">

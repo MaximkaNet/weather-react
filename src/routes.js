@@ -5,8 +5,12 @@ import Weather from './Components/Weather/Weather';
 export const routes = [
   {
     to: '/',
-    component: <div>
-      <div>Home</div>
+    component: <div style={{
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      color: 'var(--secondary-color)'
+    }}>
       <Link to="/weather/" style={{ color: '#fff' }}>Go to weather</Link>
     </div>
   },
