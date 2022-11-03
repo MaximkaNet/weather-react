@@ -1,9 +1,20 @@
-#topbar{
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 10px 30px;
+  padding-top: 20px;
+  background-color: var(--bg-color);
+  z-index: 700;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.topbar-content {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: var(--width-md);
-  padding-top: 20px;
-  margin-bottom: 30px;
 }

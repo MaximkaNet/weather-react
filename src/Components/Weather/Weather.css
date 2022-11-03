@@ -1,4 +1,5 @@
-.weather{
+.weather {
   width: 100%;
   max-width: var(--width-md);
+  margin-top: 70px;
 }

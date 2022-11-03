@@ -2,18 +2,11 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import './Menu.css';
+import { menuItems } from '../../menuItems';
 
 const Menu = () => {
   const [isBurger, setIsBurger] = useState(false);
   const [isActive, setActive] = useState(false);
-
-  const menuItems = [{
-    name: "Home",
-    to: '/'
-  }, {
-    name: "Weather",
-    to: '/weather'
-  }];
 
   const open = async () => {
     await setActive(true);
@@ -23,8 +16,16 @@ const Menu = () => {
   const close = () => {
     $('.overlay').fadeOut('fast', () => setActive(false));
   }
+
+  let width = window.innerWidth;
+  if (width < 768 && !isBurger) {
+    setIsBurger(true);
+  }
+  else if (width >= 768 && isBurger) {
+    setIsBurger(false);
+  }
   window.addEventListener('resize', (event) => {
-    let width = window.innerWidth;
+    width = window.innerWidth;
     if (width < 768 && !isBurger) {
       setIsBurger(true);
     }

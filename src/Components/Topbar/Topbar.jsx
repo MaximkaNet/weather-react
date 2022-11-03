@@ -4,12 +4,12 @@ import './Topbar.css';
 
 const Topbar = () => {
   return (
-    <div className="container">
-      <header id="topbar">
+    <header className="topbar">
+      <div className="topbar-content">
         <SearchForm />
         <Menu />
-      </header>
-    </div >
+      </div>
+    </header>
   )
 }
 export default Topbar;
