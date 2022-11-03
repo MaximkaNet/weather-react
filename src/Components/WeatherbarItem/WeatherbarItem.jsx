@@ -10,7 +10,7 @@ const WeatherbarItem = ({ time, weathercode, min, max, item }) => {
   const { changeSlide } = useContext(WeatherContext);
 
   return (
-    <div className={current === item ? 'weatherbarItem active' : 'weatherbarItem'} onClick={() => { setCurrent(item); changeSlide(time); }}>
+    <div className={current === item ? 'weatherbarItem weatherbarItem_active' : 'weatherbarItem'} onClick={() => { setCurrent(item); changeSlide(time); }}>
       <div className="weatherbarItem_container" style={{ justifyContent: 'space-between' }}>
         <div className="weatherbarItem_container" style={{ flexDirection: 'column' }}>
           <span className="weatherbarItem_date">{useDateCoverter(time, 'en')}</span>

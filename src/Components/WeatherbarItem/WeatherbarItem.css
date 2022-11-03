@@ -11,7 +11,7 @@
   cursor: pointer;
 }
 
-.active {
+.weatherbarItem_active {
   border-color: var(--secondary-color);
 }
 
