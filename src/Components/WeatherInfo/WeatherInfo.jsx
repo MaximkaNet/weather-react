@@ -1,9 +1,16 @@
+import { formattingAddress } from "../../utils/data_utils";
+import { MapContainer, TileLayer, Marker } from 'react-leaflet'
+import { Icon } from 'leaflet';
+
 const WeatherInfo = ({ info }) => {
   return (<>
     <div className="weather_info">
       <div className="weather_container">
         <div className="weather_main_info">
-          <h1 className="place_name">{info.place}</h1>
+          <div className="weather_main_info_title">
+            <h1 className="place_name">{info.place.name}</h1>
+            <span className="place_additional">{formattingAddress(info.place.country, info.place.state, info.place.district)}</span>
+          </div>
           <span className="temperature">{info.temperature}°</span>
           <span className="status">{info.status}</span>
         </div>
@@ -24,6 +31,13 @@ const WeatherInfo = ({ info }) => {
           }
         </div>
       }
+      <MapContainer center={[info.place.lat, info.place.lon]} zoom={12} scrollWheelZoom={true}>
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={[info.place.lat, info.place.lon]} />
+      </MapContainer>
     </div>
   </>)
 }

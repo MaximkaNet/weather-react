@@ -1,8 +1,8 @@
 .weather_hourly {
   width: 50%;
   max-width: 370px;
-  max-height: calc(100vh - 72px - var(--weatherbar-height));
-  padding-right: 10px;
+  /* max-height: calc(100vh - 72px - var(--weatherbar-height)); */
+  /* padding-right: 10px; */
   overflow-y: auto;
 }
 

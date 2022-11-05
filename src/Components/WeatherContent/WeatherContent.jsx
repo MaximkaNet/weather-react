@@ -11,12 +11,12 @@ const parseDate = (dateStr) => {
 }
 
 const WeatherContent = () => {
-  const { current, placeName } = useContext(WeatherContext);
+  const { current, placeInfo } = useContext(WeatherContext);
   return (
     <div className="weather_content">
       <WeatherInfo
         info={{
-          place: placeName,
+          place: placeInfo,
           temperature: current.details.temperature_max,
           status: getStatusStr(current.details.weathercode),
           statusImg: getStatusImg(current.details.weathercode),
@@ -26,18 +26,6 @@ const WeatherContent = () => {
           }
         }}
       />
-      {/* <WeatherInfo
-        placeName={placeName}
-        temperature={current.details.temperature_max}
-        status={getStatusStr(current.details.weathercode)}
-        statusImg={getStatusImg(current.details.weathercode)}
-        additionalInfo={
-          {
-            sunrise: parseDate(current.details.sunrise),
-            sunset: parseDate(current.details.sunset)
-          }
-        }
-      /> */}
       <Hourly hourly={current.hourly} />
     </div>
   )

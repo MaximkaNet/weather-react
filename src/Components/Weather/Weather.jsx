@@ -147,7 +147,7 @@ const Weather = () => {
         <div className="container">
           <div className="weather">
             <WeatherContext.Provider value={{
-              placeName: placeInfo.name || placeInfo.state,
+              placeInfo: placeInfo,
               current: currentSlide,
               changeSlide: changeSlide
             }}>

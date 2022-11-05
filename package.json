@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "jquery": "^3.6.1",
+    "leaflet": "^1.9.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-leaflet": "^4.1.0",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
     "tz-lookup": "^6.1.25"
