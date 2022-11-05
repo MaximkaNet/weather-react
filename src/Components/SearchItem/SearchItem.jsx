@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../../App';
+import { formattingAddress } from '../../utils/data_utils';
 import './SearchItem.css';
 
 const SearchItem = ({ item }) => {
@@ -18,10 +19,9 @@ const SearchItem = ({ item }) => {
     >
       <div className="search-item-title">{item.name}</div>
       {
-        item.state ?
-          <div className="search-item-additional">{`${item.country}, ${item.state}`}</div>
-          :
-          <div className="search-item-additional">{`${item.country}`}</div>
+        (item.state || item.district || item.country)
+        &&
+        <div className="search-item-additional">{formattingAddress(item.country, item.state, item.district)}</div>
       }
     </Link>
   )

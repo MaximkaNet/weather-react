@@ -5,6 +5,7 @@ import { getPlaces } from '../../services/placeService';
 import './Search.css';
 import Loader from '../Loader/Loader';
 import { Context } from '../../App';
+import { formattingSearchValue } from '../../utils/data_utils';
 
 const Search = () => {
   const { name } = useParams();
@@ -16,12 +17,14 @@ const Search = () => {
 
   useLayoutEffect(() => {
     if (name != undefined)
-      search.setSearchValue(name.replace('-', ' '));
+      search.setSearchValue(formattingSearchValue(name));
+    if (name === undefined) setLoading(false);
   })
 
   useEffect(() => {
     if (name != null) {
       setLoading(true);
+      //anonymous function for get data(async)
       (async () => {
         const placesInfo = await getPlaces(name);
         setResults(placesInfo);

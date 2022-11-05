@@ -48,3 +48,28 @@ export const getDailyBy = (daily, date) => {
 
   return result;
 }
+
+export const formattingAddress = (country, state, district) =>
+  country ?
+    state ?
+      district ?
+        `${country}, ${state}, ${district}`
+        :
+        `${country}, ${state}`
+      :
+      district ?
+        `${country}, ${district}`
+        :
+        `${country}`
+    :
+    state ?
+      district ?
+        `${state}, ${district}`
+        :
+        `${state}`
+      :
+      district ?
+        `${district}`
+        :
+        '';
+export const formattingSearchValue = (value) => value.replace(' ', '+').replace(/([\%\/\,\!\\\^\$\{\}\[\]\(\)\.\*\?\|\<\>\-\&][0-9])/g, '+');
