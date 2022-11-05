@@ -5,7 +5,7 @@ import { getPlaces } from '../../services/placeService';
 import './Search.css';
 import Loader from '../Loader/Loader';
 import { Context } from '../../App';
-import { formattingSearchValue } from '../../utils/data_utils';
+import { formatSearchValue } from '../../utils/data_utils';
 
 const Search = () => {
   const { name } = useParams();
@@ -16,8 +16,8 @@ const Search = () => {
   const [loading, setLoading] = useState(true);
 
   useLayoutEffect(() => {
-    if (name != undefined)
-      search.setSearchValue(formattingSearchValue(name));
+    if (name !== undefined)
+      search.setSearchValue(name.split('-')[0].replace('_', ' '));
     if (name === undefined) setLoading(false);
   })
 
@@ -26,7 +26,7 @@ const Search = () => {
       setLoading(true);
       //anonymous function for get data(async)
       (async () => {
-        const placesInfo = await getPlaces(name);
+        const placesInfo = await getPlaces(formatSearchValue(name.split('-')[0]));
         setResults(placesInfo);
         setLoading(false);
       })()

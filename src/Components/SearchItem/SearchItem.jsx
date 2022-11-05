@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../../App';
-import { formattingAddress } from '../../utils/data_utils';
+import { formatSearchValue_place_id, formattingAddress as formatAddress } from '../../utils/data_utils';
 import './SearchItem.css';
 
 const SearchItem = ({ item }) => {
@@ -10,9 +10,9 @@ const SearchItem = ({ item }) => {
     <Link
       to={
         item.name ?
-          `../weather/${item.name.toLowerCase().replace(' ', '-')}`
+          `../weather/${formatSearchValue_place_id(item.name.toLowerCase(), item.place_id)}`
           :
-          `../weather/${item.state.toLowerCase().replace(' ', '-')}`
+          `../weather/${formatSearchValue_place_id(item.state.toLowerCase(), item.place_id)}`
       }
       onClick={() => search.setFound(item)}
       className="search-item"
@@ -21,7 +21,7 @@ const SearchItem = ({ item }) => {
       {
         (item.state || item.district || item.country)
         &&
-        <div className="search-item-additional">{formattingAddress(item.country, item.state, item.district)}</div>
+        <div className="search-item-additional">{formatAddress(item.country, item.state, item.district)}</div>
       }
     </Link>
   )

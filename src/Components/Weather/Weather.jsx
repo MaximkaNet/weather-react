@@ -14,7 +14,7 @@ import './Weather.css';
 import WeatherContent from "../WeatherContent/WeatherContent";
 
 import { useParams } from "react-router-dom";
-import { getPlaces } from "../../services/placeService";
+import { getPlaceById, getPlaces } from "../../services/placeService";
 import { Context } from "../../App";
 import { getWeatherJSON } from "../../services/weatherResponseService";
 import Loader from "../Loader/Loader";
@@ -51,7 +51,16 @@ const getPlaceInfo = async (placeName, found) => {
   }
 
   if (found == null) {
-    let res = await getPlaces(placeName);
+    let searchQuery = placeName.split('-');
+    let res;
+    if (searchQuery.length === 2) {
+      res = await getPlaceById(searchQuery[1]);
+      return res ? res : {
+        error: true,
+        reason: 'Not found'
+      };
+    }
+    res = await getPlaces(searchQuery[0]);
     return res ? res[0] : {
       error: true,
       reason: 'Not found'
@@ -80,8 +89,8 @@ const Weather = () => {
   const [isLoaded, setLoaded] = useState(false);
 
   useLayoutEffect(() => {
-    if (choice != undefined)
-      search.setSearchValue(choice.replace('-', ' '));
+    if (choice !== undefined)
+      search.setSearchValue(choice.split('-')[0]);
   })
 
   // get data from https://open-meteo.com/

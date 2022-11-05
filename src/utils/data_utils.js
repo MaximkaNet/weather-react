@@ -28,9 +28,9 @@ export const getHourlyBy = (hourly, date) => {
   let result = [];
 
   hourly.forEach(item => {
-    if (item.time.getDate() == date.getDate()
-      && item.time.getMonth() == date.getMonth()
-      && item.time.getFullYear() == date.getFullYear())
+    if (item.time.getDate() === date.getDate()
+      && item.time.getMonth() === date.getMonth()
+      && item.time.getFullYear() === date.getFullYear())
       result.push(item);
   })
 
@@ -40,12 +40,13 @@ export const getDailyBy = (daily, date) => {
   date.setHours(0, 0, 0, 0);
   let result;
   daily.forEach(item => {
-    if (item.time.getDate() == date.getDate()
-      && item.time.getMonth() == date.getMonth()
-      && item.time.getFullYear() == date.getFullYear())
+    // throw "Error with date. 23:00 anomalni time";
+    if (item.time.getDate() === date.getDate()
+      && item.time.getMonth() === date.getMonth()
+      && item.time.getFullYear() === date.getFullYear()) {
       result = item;
-  })
-
+    }
+  });
   return result;
 }
 
@@ -72,4 +73,6 @@ export const formattingAddress = (country, state, district) =>
         `${district}`
         :
         '';
-export const formattingSearchValue = (value) => value.replace(' ', '+').replace(/([\%\/\,\!\\\^\$\{\}\[\]\(\)\.\*\?\|\<\>\-\&][0-9])/g, '+');
+export const formatSearchValue = (value) => value.replace(' ', '_').replace(/([\%\/\,\!\\\^\$\{\}\[\]\(\)\.\*\?\|\<\>\-\&])/g, '_');
+export const formatSearchValue_place_id = (value, place_id) => `${formatSearchValue(value)}-${place_id}`;
+export const parseSearchValue = (value) => value.split(/-/);
