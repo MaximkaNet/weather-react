@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../../App";
 
-// import loupeWhite from '../../img/loupe-white.png';
 import { formatSearchValue } from "../../utils/data_utils";
 import './SearchForm.css';
 
@@ -23,14 +22,14 @@ const SearchForm = () => {
     navigate(`/search/${formatSearchValue(inputValue)}`);
   }
   useEffect(() => {
-    const delayDebounceFn = setTimeout(() => {
+    const searchDelay = setTimeout(() => {
       if (inputValue !== '') {
-        navigate(`/search/${formatSearchValue(inputValue)}`);
         search.setSearchValue(inputValue);
+        navigate(`/search/${formatSearchValue(inputValue)}`);
       }
     }, 800)
-    return () => clearTimeout(delayDebounceFn)
-  }, [inputValue, navigate, search])
+    return () => clearTimeout(searchDelay);
+  }, [inputValue])
   return (
     <form className="searchForm" onSubmit={submit}>
       <input
@@ -42,9 +41,6 @@ const SearchForm = () => {
         value={inputValue}
         placeholder={search.searchValue}
       />
-      {/* <button type="submit" className="send">
-        <img src={loupeWhite} alt={loupeWhite.name} />
-      </button> */}
     </form>
   )
 }

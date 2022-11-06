@@ -50,7 +50,7 @@ export const getDailyBy = (daily, date) => {
   return result;
 }
 
-export const formattingAddress = (country, state, district) =>
+export const formatAddress = (country, state, district) =>
   country ?
     state ?
       district ?

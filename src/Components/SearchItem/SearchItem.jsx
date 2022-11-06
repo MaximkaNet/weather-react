@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../../App';
-import { formatSearchValue_place_id, formattingAddress as formatAddress } from '../../utils/data_utils';
+import { formatSearchValue_place_id, formatAddress } from '../../utils/data_utils';
 import './SearchItem.css';
 
 const SearchItem = ({ item }) => {

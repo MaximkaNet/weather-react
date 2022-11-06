@@ -1,4 +1,4 @@
-import { formattingAddress } from "../../utils/data_utils";
+import { formatAddress } from "../../utils/data_utils";
 import { MapContainer, TileLayer, Marker } from 'react-leaflet'
 import { Icon } from 'leaflet';
 
@@ -9,7 +9,7 @@ const WeatherInfo = ({ info }) => {
         <div className="weather_main_info">
           <div className="weather_main_info_title">
             <h1 className="place_name">{info.place.name}</h1>
-            <span className="place_additional">{formattingAddress(info.place.country, info.place.state, info.place.district)}</span>
+            <span className="place_additional">{formatAddress(info.place.country, info.place.state, info.place.district)}</span>
           </div>
           <span className="temperature">{info.temperature}°</span>
           <span className="status">{info.status}</span>
@@ -21,7 +21,7 @@ const WeatherInfo = ({ info }) => {
           {
             Object.keys(info.additionalInfo).map((key) => <div key={key} className="weather_additional_info_item">
               <span className="additional_info_item_key">
-                {key[0].toUpperCase() + key.slice(1)}:
+                {key[0].toUpperCase() + key.replace(/-_/, ' ').slice(1)}:
               </span>
               <span className="additional_info_item_value">
                 {info.additionalInfo[key]}

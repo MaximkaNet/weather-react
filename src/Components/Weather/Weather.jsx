@@ -14,60 +14,13 @@ import './Weather.css';
 import WeatherContent from "../WeatherContent/WeatherContent";
 
 import { useParams } from "react-router-dom";
-import { getPlaceById, getPlaces } from "../../services/placeService";
+import { getPlaceInfo } from "../../services/placeService";
 import { Context } from "../../App";
 import { getWeatherJSON } from "../../services/weatherResponseService";
 import Loader from "../Loader/Loader";
 import { handleHourly } from "../../utils/handlers";
 
 export const WeatherContext = createContext(null);
-
-const getCurrentPlaceInfo = async () => {
-  const { ip } = await fetch('https://api.ipify.org/?format=json').then(res => res.json())
-  const geoplugin = `https://ipapi.co/${ip}/json/`;
-  let response = await fetch(geoplugin).then(res => res.json());
-  const place = {
-    name: response.city,
-    lat: response.latitude, lon: response.longitude,
-    timezone: response.timezone
-  }
-  return place;
-}
-
-// const getCurrentPlaceInfo = async () => {
-//   const geoplugin = 'http://www.geoplugin.net/json.gp';
-//   let response = await fetch(geoplugin).then(res => res.json());
-//   const place = {
-//     name: response.geoplugin_city,
-//     lat: response.geoplugin_latitude, lon: response.geoplugin_longitude,
-//     timezone: response.geoplugin_timezone
-//   }
-//   return place;
-// }
-
-const getPlaceInfo = async (placeName, found) => {
-  if (placeName === undefined && found == null) {
-    return await getCurrentPlaceInfo();
-  }
-
-  if (found == null) {
-    let searchQuery = placeName.split('-');
-    let res;
-    if (searchQuery.length === 2) {
-      res = await getPlaceById(searchQuery[1]);
-      return res ? res : {
-        error: true,
-        reason: 'Not found'
-      };
-    }
-    res = await getPlaces(searchQuery[0]);
-    return res ? res[0] : {
-      error: true,
-      reason: 'Not found'
-    };
-  }
-  return found;
-}
 
 const Weather = () => {
   const currentDate = new Date();
@@ -90,7 +43,7 @@ const Weather = () => {
 
   useLayoutEffect(() => {
     if (choice !== undefined)
-      search.setSearchValue(choice.split('-')[0]);
+      search.setSearchValue(choice.split('-')[0].replace('_', ' '));
   })
 
   // get data from https://open-meteo.com/
